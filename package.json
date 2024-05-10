@@ -1,0 +1,31 @@
+{
+  "name": "servermetrics",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha --env-file=.env **/*.spec.js --reporter mochawesome -r dotenv/config",
+    "report": "mocha --reporter mochawesome"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@prisma/client": "^5.13.0",
+    "expect.js": "^0.3.1",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-disk-info": "^1.3.0",
+    "node-schedule": "^2.1.1",
+    "prisma": "^5.13.0"
+  },
+  "devDependencies": {
+    "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "mocha": "^10.4.0",
+    "mochawesome": "^7.1.3",
+    "mochawesome-report-generator": "^6.2.0",
+    "supertest": "^7.0.0"
+  }
+}

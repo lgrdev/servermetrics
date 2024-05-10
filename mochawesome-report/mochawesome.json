@@ -1,0 +1,196 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 5,
+    "passes": 0,
+    "pending": 0,
+    "failures": 5,
+    "start": "2024-05-10T06:21:48.698Z",
+    "end": "2024-05-10T06:21:48.706Z",
+    "duration": 8,
+    "testsRegistered": 5,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "34408001-fca3-4928-9bf1-2968a28263fe",
+      "title": "",
+      "fullFile": "/home/ubuntu/system/nuxt_dev/dev_app/servermetrics/tests/auth.spec.js",
+      "file": "/tests/auth.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "eb118eec-79e5-4438-a077-83d61a39f06b",
+          "title": "Test Api auth using supertest",
+          "fullFile": "/home/ubuntu/system/nuxt_dev/dev_app/servermetrics/tests/auth.spec.js",
+          "file": "/tests/auth.spec.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully pass the test for get api with apikey and secretid",
+              "fullTitle": "Test Api auth using supertest should successfully pass the test for get api with apikey and secretid",
+              "timedOut": false,
+              "duration": 2,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request(baseurl)\n\t.post('/api/auth')\n            .send({ apikey: process.env.APIKEY, secretid: process.env.SECRETID })\n\t.set('Accept', 'application/json')\n\t.set('Content-Type', 'application/json')\n\t.end(function (err, res) {\n\t\texpect(res.statusCode).to.be.equal(200);\n\t\texpect(res.body).not.to.be.empty;\n\t\tdone();\n\t});",
+              "err": {
+                "message": "TypeError: Invalid URL",
+                "estack": "TypeError: Invalid URL\n    at new URL (node:internal/url:796:36)\n    at Request.request (node_modules/superagent/lib/node/index.js:668:15)\n    at Request.end (node_modules/superagent/lib/node/index.js:899:8)\n    at Test.end (node_modules/supertest/lib/test.js:118:11)\n    at Context.<anonymous> (tests/auth.spec.js:13:5)\n    at process.processImmediate (node:internal/timers:478:21)",
+                "diff": null
+              },
+              "uuid": "8bc7944e-a169-48f5-84c0-6dadd3d06188",
+              "parentUUID": "eb118eec-79e5-4438-a077-83d61a39f06b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should successfully pass the test for get api without apikey and secretid",
+              "fullTitle": "Test Api auth using supertest should successfully pass the test for get api without apikey and secretid",
+              "timedOut": false,
+              "duration": 1,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request(baseurl)\n\t.post('/api/auth')\n\t.end(function (err, res) {\n\t\texpect(res.statusCode).to.be.equal(400);\n\t\tdone();\n\t});",
+              "err": {
+                "message": "TypeError: Invalid URL",
+                "estack": "TypeError: Invalid URL\n    at new URL (node:internal/url:796:36)\n    at Request.request (node_modules/superagent/lib/node/index.js:668:15)\n    at Request.end (node_modules/superagent/lib/node/index.js:899:8)\n    at Test.end (node_modules/supertest/lib/test.js:118:11)\n    at Context.<anonymous> (tests/auth.spec.js:22:5)\n    at process.processImmediate (node:internal/timers:478:21)",
+                "diff": null
+              },
+              "uuid": "5e9e08f3-bcdf-40cc-953b-93da2ec0db1c",
+              "parentUUID": "eb118eec-79e5-4438-a077-83d61a39f06b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should successfully pass the test for get api without secretid",
+              "fullTitle": "Test Api auth using supertest should successfully pass the test for get api without secretid",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request(baseurl)\n\t.post('/api/auth')\n\t.send({ apikey: process.env.APIKEY })\n\t.end(function (err, res) {\n\t\texpect(res.statusCode).to.be.equal(400);\n\t\tdone();\n\t});",
+              "err": {
+                "message": "TypeError: Invalid URL",
+                "estack": "TypeError: Invalid URL\n    at new URL (node:internal/url:796:36)\n    at Request.request (node_modules/superagent/lib/node/index.js:668:15)\n    at Request.end (node_modules/superagent/lib/node/index.js:899:8)\n    at Test.end (node_modules/supertest/lib/test.js:118:11)\n    at Context.<anonymous> (tests/auth.spec.js:31:5)\n    at process.processImmediate (node:internal/timers:478:21)",
+                "diff": null
+              },
+              "uuid": "3de3f679-4c51-45c5-bfac-b5e2fff22a71",
+              "parentUUID": "eb118eec-79e5-4438-a077-83d61a39f06b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should successfully pass the test for get api without apikey",
+              "fullTitle": "Test Api auth using supertest should successfully pass the test for get api without apikey",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request(baseurl)\n\t.post('/api/auth')\n\t.send({ secretid: process.env.SECRETID })\n\t.end(function (err, res) {\n\t\texpect(res.statusCode).to.be.equal(400);\n\t\tdone();\n\t});",
+              "err": {
+                "message": "TypeError: Invalid URL",
+                "estack": "TypeError: Invalid URL\n    at new URL (node:internal/url:796:36)\n    at Request.request (node_modules/superagent/lib/node/index.js:668:15)\n    at Request.end (node_modules/superagent/lib/node/index.js:899:8)\n    at Test.end (node_modules/supertest/lib/test.js:118:11)\n    at Context.<anonymous> (tests/auth.spec.js:40:5)\n    at process.processImmediate (node:internal/timers:478:21)",
+                "diff": null
+              },
+              "uuid": "d86e7466-96f8-405a-ab6e-a60c242c593c",
+              "parentUUID": "eb118eec-79e5-4438-a077-83d61a39f06b",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "should successfully pass the test for get api with false apikey and secretid",
+              "fullTitle": "Test Api auth using supertest should successfully pass the test for get api with false apikey and secretid",
+              "timedOut": false,
+              "duration": 0,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "request(baseurl)\n\t.post('/api/auth')\n\t.send({ apikey: \"falsekey\", secretid: \"falsesecret\" })\n\t.end(function (err, res) {\n\t\texpect(res.statusCode).to.be.equal(400);\n\t\tdone();\n\t});",
+              "err": {
+                "message": "TypeError: Invalid URL",
+                "estack": "TypeError: Invalid URL\n    at new URL (node:internal/url:796:36)\n    at Request.request (node_modules/superagent/lib/node/index.js:668:15)\n    at Request.end (node_modules/superagent/lib/node/index.js:899:8)\n    at Test.end (node_modules/supertest/lib/test.js:118:11)\n    at Context.<anonymous> (tests/auth.spec.js:49:5)\n    at process.processImmediate (node:internal/timers:478:21)",
+                "diff": null
+              },
+              "uuid": "70bb20ca-3aee-4879-a44b-fd4b4676bc45",
+              "parentUUID": "eb118eec-79e5-4438-a077-83d61a39f06b",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "8bc7944e-a169-48f5-84c0-6dadd3d06188",
+            "5e9e08f3-bcdf-40cc-953b-93da2ec0db1c",
+            "3de3f679-4c51-45c5-bfac-b5e2fff22a71",
+            "d86e7466-96f8-405a-ab6e-a60c242c593c",
+            "70bb20ca-3aee-4879-a44b-fd4b4676bc45"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 3,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.4.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
