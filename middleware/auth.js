@@ -1,5 +1,5 @@
 // Importation du module jsonwebtoken pour la vérification des tokens JWT
-const jwt = require("jsonwebtoken");
+// const jwt = require("jsonwebtoken");
 
 /**
  * Middleware pour vérifier le token JWT.

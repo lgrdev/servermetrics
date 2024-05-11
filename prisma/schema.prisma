@@ -34,3 +34,21 @@ model data_disk {
   freepercent   Int
   @@index([createdAt])
 }
+
+// Définition du modèle DataContainer
+model DataContainer {
+  id          Int        @id @default(autoincrement())
+  name        String     @unique
+  states      DataContainerState[]
+}
+
+// Définition du modèle DataContainerState
+model DataContainerState {
+  id            Int        @id @default(autoincrement())
+  status        String
+  state         String
+  containerId   Int
+  createdAt     DateTime   @default(now()) 
+  container     DataContainer @relation(fields: [containerId], references: [id])
+  @@index([createdAt])
+}
