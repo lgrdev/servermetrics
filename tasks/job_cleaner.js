@@ -22,7 +22,7 @@ async function mainFunction() {
                 }
             }
         });
-        console.log('Data deleted:', result);
+        
     } catch (error) {
         console.error('Error deleting data:', error);
     }
@@ -36,7 +36,7 @@ async function mainFunction() {
                 }
             }
         });
-        console.log('Data deleted:', result);
+        
     } catch (error) {
         console.error('Error deleting data:', error);
     }
@@ -50,10 +50,25 @@ async function mainFunction() {
                 }
             }
         });
-        console.log('Data deleted:', result);
+        
     } catch (error) {
         console.error('Error deleting data:', error);
     }
+
+    try {
+        // Suppression des données de la DataContainerState
+        const result = await prisma.DataContainerState.deleteMany({
+            where: {
+                createdAt: {
+                    lt: new Date(new Date() - 2 * 60 * 60 * 1000)
+                }
+            }
+        });
+    
+    } catch (error) {
+        console.error('Error deleting data:', error);
+    }
+    
 }
 
 // Planification de l'exécution de la fonction principale toutes les 5 heures
