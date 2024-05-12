@@ -13,6 +13,16 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:13
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: testdb
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     strategy:
       matrix:
@@ -26,6 +36,14 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: Create .env file
+      run: |
+        echo DATABASE_URL="postgresql://postgres:postgres@localhost:5432/testdb?schema=public"  >> .env
+        echo JWTPRIVATEKEY="TestonsCeJwt" >> .env
+        echo APIKEY="xxxxxx" >> .env
+        echo SECRETID="YYYYY" >> .env
+        echo PORT=3000 >> .env
+        echo BASE_URL="http://localhost" >> .env
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
