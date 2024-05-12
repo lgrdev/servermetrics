@@ -6,7 +6,7 @@ const baseurl = process.env.BASE_URL+":"+process.env.PORT
 
 axios.post(baseurl+'/api/auth', { apikey: process.env.APIKEY, secretid: process.env.SECRETID })
     .then(res => {
-        const token = res.data;
+        const token = res.data.token;
         describe('Test Api cpu using supertest', () => { 
         
             it('should successfully pass the test for get api with token :', (done) => {

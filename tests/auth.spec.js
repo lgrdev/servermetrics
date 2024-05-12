@@ -12,7 +12,7 @@ describe('Test Api auth using supertest', () => {
 			.set('Content-Type', 'application/json')
 			.end(function (err, res) {
 				expect(res.statusCode).to.be.equal(200);
-				expect(res.body).not.to.be.empty;
+				expect(res.body.token).not.to.be.empty;
 				done();
 			});
 	});

@@ -25,10 +25,11 @@ router.post("/api/auth", (req, res) => {
     // Si l'apikey et le secretid sont valides
     if (apikey === process.env.APIKEY && secretid === process.env.SECRETID) {
         // Création d'un nouveau token JWT
-        const token = jwt.sign({ apikey: req.body.apikey }, process.env.JWTPRIVATEKEY, { expiresIn: "1h" });
+        const accessToken = jwt.sign({ server: 'servermectrics:'+Date.now().toString }, process.env.JWTPRIVATEKEY, { expiresIn: "5m" });
 
         // Envoi du token en réponse
-        res.send(token);
+        res.json({ token: accessToken });
+        
     } else {
         // Si l'apikey ou le secretid sont invalides, envoi d'un message d'erreur avec le statut 400 (Bad Request)
         return res.status(400).send("Invalid apikey or secretid");
