@@ -11,19 +11,35 @@ const express = require("express");
 // Création d'un nouvel objet routeur à partir d'Express
 const router = express.Router();
 
+
 /**
- * Route GET pour récupérer les dernières données du disque.
- * Cette route nécessite une authentification.
- * Si l'authentification est réussie, les dernières données du disque sont récupérées et renvoyées.
- * En cas d'erreur, un message d'erreur est renvoyé.
- *
- * @name GET /api/disk
- * @function
- * @async
- * @param {string} path - Express path
- * @param {callback} middleware - Express middleware.
- * @returns {Object} 200 - Les dernières données du disque
- * @returns {Error} 500 - 'An error occured'
+ * @openapi
+ * /api/disk:
+ *   get:
+ *     summary: Récupération des dernières données du disque
+ *     description: Cette route est utilisée pour récupérer les dernières données du disque stockées dans la base de données. Un token JWT doit être fourni dans l'en-tête "x-auth-token" de la requête pour l'authentification.
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Les dernières données du disque sont renvoyées.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: L'ID de l'entrée de données.
+ *                 freepercent:
+ *                   type: integer
+ *                   description: Le pourcentage de disque libre.
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                   description: La date et l'heure de création de l'entrée de données.
+ *       400:
+ *         description: Une erreur est survenue lors de la récupération des données.
  */
 router.get("/api/disk", auth, async (req, res) => {
     try {

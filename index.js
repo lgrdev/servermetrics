@@ -3,6 +3,8 @@ const path = require("path");
 const fs = require("fs");
 const express = require("express");
 const cors = require("cors");
+const swaggerDocs = require('./swagger.js');
+
 
 // Importation des tâches planifiées
 const jobmemory = require('./tasks/job_memory.js');
@@ -18,6 +20,7 @@ const app = express();
 // Utilisation du middleware pour parser le corps des requêtes en JSON
 app.use(express.json());
 app.use(cors());
+app.disable('x-powered-by'); 
 
 /**
  * Récupération de la liste des fichiers dans le répertoire "routes"
@@ -36,3 +39,4 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log('Serveur démarré sur le port ' + PORT);
 });
+swaggerDocs(app, PORT)

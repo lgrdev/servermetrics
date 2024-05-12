@@ -8,16 +8,40 @@ const jwt = require("jsonwebtoken");
 const router = express.Router();
 
 /**
- * Route POST pour l'authentification.
- * Cette route vérifie l'apikey et le secretid passés dans le corps de la requête.
- * Si les identifiants sont valides, un nouveau token JWT est créé et renvoyé.
- * Sinon, un message d'erreur est renvoyé avec le statut 400 (Bad Request).
- *
- * @name POST /api/auth
- * @param {string} req.body.apikey - L'API key de l'utilisateur
- * @param {string} req.body.secretid - Le secret ID de l'utilisateur
- * @return {string} 200 - Le token JWT
- * @return {Error}  400 - 'Invalid apikey or secretid'
+ * @openapi
+ * /api/auth:
+ *   post:
+ *     summary: Authentification de l'utilisateur
+ *     description: Cette route est utilisée pour authentifier l'utilisateur en vérifiant l'apikey et le secretid fournis, et renvoie un token JWT si l'authentification est réussie.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - apikey
+ *               - secretid
+ *             properties:
+ *               apikey:
+ *                 type: string
+ *                 description: La clé API de l'utilisateur.
+ *               secretid:
+ *                 type: string
+ *                 description: L'ID secret de l'utilisateur.
+ *     responses:
+ *       200:
+ *         description: L'authentification a réussi et un token JWT est renvoyé.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                   description: Le token JWT.
+ *       400:
+ *         description: L'apikey ou le secretid sont invalides.
  */
 router.post("/api/auth", (req, res) => {
     const { apikey, secretid } = req.body

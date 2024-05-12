@@ -11,19 +11,35 @@ const express = require("express");
 // Création d'un nouvel objet routeur à partir d'Express
 const router = express.Router();
 
+
 /**
- * Route GET pour récupérer les dernières données de la mémoire.
- * Cette route nécessite une authentification.
- * Si l'authentification est réussie, les dernières données de la mémoire sont récupérées et renvoyées.
- * En cas d'erreur, un message d'erreur est renvoyé.
- *
- * @name GET /api/memory
- * @function
- * @async
- * @param {string} path - Express path
- * @param {callback} middleware - Express middleware.
- * @returns {Object} 200 - Les dernières données de la mémoire
- * @returns {Error} 500 - 'An error occured'
+ * @openapi
+ * /api/memory:
+ *   get:
+ *     summary: Récupération des dernières données de la mémoire
+ *     description: Cette route est utilisée pour récupérer les dernières données de la mémoire stockées dans la base de données. Un token JWT doit être fourni dans l'en-tête "x-auth-token" de la requête pour l'authentification.
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Les dernières données de la mémoire sont renvoyées.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 id:
+ *                   type: integer
+ *                   description: L'ID de l'entrée de données.
+ *                 freepercent:
+ *                   type: integer
+ *                   description: Le pourcentage de mémoire libre.
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                   description: La date et l'heure de création de l'entrée de données.
+ *       400:
+ *         description: Une erreur est survenue lors de la récupération des données.
  */
 router.get("/api/memory", auth, async (req, res) => {
     try {
