@@ -1,15 +1,15 @@
 {
   "name": "servermetrics",
   "version": "1.0.0",
-  "description": "",
+  "description": "simple serveur interne de monitoring (cpu, ram, disk, docker) avec des api rest",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "test": "mocha --env-file=.env **/*.spec.js --reporter mochawesome -r dotenv/config",
     "report": "mocha --reporter mochawesome"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["nodejs", "express", "prisma", "node-schedule","postgresql", "swagger", "rest", "api"],
+  "author": "Lgrdev",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.13.0",
