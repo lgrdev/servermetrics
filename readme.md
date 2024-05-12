@@ -1,5 +1,5 @@
 # ServerMetrics
-
+[![Node.js CI](https://github.com/lgrdev/servermetrics/actions/workflows/node.js.yml/badge.svg)](https://github.com/lgrdev/servermetrics/actions/workflows/node.js.yml)
 ## Projet Metrics
 
 ![Projet Metrics](./images/nodejs-metrics.png "Projet Metrics")
