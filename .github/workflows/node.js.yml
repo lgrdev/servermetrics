@@ -46,7 +46,7 @@ jobs:
         echo BASE_URL="http://localhost" >> .env
     - run: npm ci
     - name: Run migrations
-      run: npm run migrate    
+      run: prisma migrate --name testing
     - run: npm run build --if-present
     - run: npm start
     - run: npm test
