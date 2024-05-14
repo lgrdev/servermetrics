@@ -19,7 +19,7 @@ const router = express.Router();
  *     summary: Récupération des dernières données des conteneurs Docker
  *     description: Cette route est utilisée pour récupérer les dernières données des conteneurs Docker stockées dans la base de données. Un token JWT doit être fourni dans l'en-tête "x-auth-token" de la requête pour l'authentification.
  *     security:
- *       - bearerAuth: []
+ *       - x-auth-token: token string
  *     responses:
  *       200:
  *         description: Les dernières données des conteneurs Docker sont renvoyées.
