@@ -1,5 +1,7 @@
-// Importation du module Prisma pour la base de données
-const prisma = require('../modules/database.js');
+const prisma = require("@prisma/client");
+const { PrismaClient } = prisma;
+
+const prismaClient = new PrismaClient();
 
 // Importation du module node-schedule pour la planification de tâches
 const schedule = require('node-schedule');
@@ -15,10 +17,10 @@ const schedule = require('node-schedule');
 async function mainFunction() {
     try {
         // Suppression des données de la mémoire
-        const result = await prisma.data_memory.deleteMany({
+        await prismaClient.data_memory.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(new Date() - 2 * 60 * 60 * 1000)
+                    lt: new Date(new Date() - process.env.CLEANER_DELETE_AFTER_HOURS * 60 * 60 * 1000)
                 }
             }
         });
@@ -29,10 +31,10 @@ async function mainFunction() {
 
     try {
         // Suppression des données du CPU
-        const result = await prisma.data_cpu.deleteMany({
+        await prismaClient.data_cpu.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(new Date() - 2 * 60 * 60 * 1000)
+                    lt: new Date(new Date() - process.env.CLEANER_DELETE_AFTER_HOURS * 60 * 60 * 1000)
                 }
             }
         });
@@ -43,10 +45,10 @@ async function mainFunction() {
 
     try {
         // Suppression des données du disque
-        const result = await prisma.data_disk.deleteMany({
+       await prismaClient.data_disk.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(new Date() - 2 * 60 * 60 * 1000)
+                    lt: new Date(new Date() - process.env.CLEANER_DELETE_AFTER_HOURS * 60 * 60 * 1000)
                 }
             }
         });
@@ -57,7 +59,7 @@ async function mainFunction() {
 
     try {
         // Suppression des données de la DataContainerState
-        const result = await prisma.DataContainerState.deleteMany({
+        await prismaClient.DataContainerState.deleteMany({
             where: {
                 createdAt: {
                     lt: new Date(new Date() - process.env.CLEANER_DELETE_AFTER_HOURS * 60 * 60 * 1000)
