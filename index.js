@@ -7,11 +7,8 @@ const swaggerDocs = require('./swagger.js');
 
 
 // Importation des tâches planifiées
-const jobmemory = require('./tasks/job_memory.js');
-const jobcpu = require('./tasks/job_cpu.js');
-const jobdisk = require('./tasks/job_disk.js');
+const jobwriter = require('./tasks/job_writer.js');
 const jobcleaner = require('./tasks/job_cleaner.js');
-const jobdocker = require('./tasks/job_docker.js');
 
 
 // Création de l'application Express
