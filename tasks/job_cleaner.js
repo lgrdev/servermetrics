@@ -60,7 +60,7 @@ async function mainFunction() {
         const result = await prisma.DataContainerState.deleteMany({
             where: {
                 createdAt: {
-                    lt: new Date(new Date() - 2 * 60 * 60 * 1000)
+                    lt: new Date(new Date() - process.env.CLEANER_DELETE_AFTER_HOURS * 60 * 60 * 1000)
                 }
             }
         });
@@ -72,7 +72,7 @@ async function mainFunction() {
 }
 
 // Planification de l'exécution de la fonction principale toutes les 5 heures
-const job= schedule.scheduleJob('0 */5 * * *', mainFunction);
+const job= schedule.scheduleJob(process.env.CLEANER_CRON, mainFunction);
 
 // Exportation de la tâche planifiée
 module.exports = job;

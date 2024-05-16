@@ -36,7 +36,7 @@ async function mainFunction() {
 }
 
 // Planification de l'exécution de la fonction principale toutes les 5 secondes
-const job = schedule.scheduleJob('*/5 * * * * *', mainFunction);
+const job = schedule.scheduleJob(process.env.CPU_CRON, mainFunction);
 
 // Exportation de la tâche planifiée
 module.exports = job;

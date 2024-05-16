@@ -58,7 +58,7 @@ async function insererDataContainerState(containerData) {
 
   
 // Planification de l'exécution de la fonction principale toutes les 2 minutes
-const job = schedule.scheduleJob('*/2 * * * *', mainFunction);
+const job = schedule.scheduleJob(process.env.DOCKER_CRON, mainFunction);
 
 // Exportation de la tâche planifiée
 module.exports = job;
