@@ -1,6 +1,6 @@
 {
   "name": "servermetrics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple serveur interne de monitoring (cpu, ram, disk, docker) avec des api rest",
   "main": "index.js",
   "scripts": {
