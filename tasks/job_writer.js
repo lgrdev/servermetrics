@@ -10,7 +10,7 @@ const prismaClient = new PrismaClient();
 async function updateDataMemory() {
 
     const newValue = await si.mem().then(data => { 
-        return Math.floor(data.free / data.total * 100);
+        return (data.free / data.total) * 100;
     });
 
     try {
@@ -30,7 +30,7 @@ async function updateDataMemory() {
 async function updateDataDisk() {   
 
     const newValue = await si.fsSize().then(data => { 
-        return Math.floor(data[0].use);
+        return data[0].use;
     });
 
     try {
@@ -49,7 +49,7 @@ async function updateDataDisk() {
 async function updateDataCpu() {
 
     const newValue = await si.currentLoad().then(data => { 
-        return Math.floor(data.currentLoad);
+        return data.currentLoad / data.cpus.length * 100;
     });
 
     try {

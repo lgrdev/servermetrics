@@ -16,7 +16,7 @@ datasource db {
 model data_memory {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now()) 
-  freepercent   Int
+  freepercent   Decimal @db.Decimal(5,2) @default(0.0)
 
   @@index([createdAt])
 }
@@ -24,14 +24,14 @@ model data_memory {
 model data_cpu {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now())
-  avgpercent    Int
+  avgpercent    Decimal @db.Decimal(5,2) @default(0.0)
   @@index([createdAt])
 }
 
 model data_disk {
   id            Int      @id @default(autoincrement())
   createdAt     DateTime @default(now()) 
-  freepercent   Int
+  freepercent   Decimal @db.Decimal(5,2) @default(0.0)
   @@index([createdAt])
 }
 
